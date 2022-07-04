@@ -1,0 +1,31 @@
+{
+	"name": "@v/seal",
+	"version": "0.1.0",
+	"description": "使用 canvas 绘制公司公章、个人印章",
+	"main": "dist/index.js",
+	"files": [
+		"dist/*",
+		"src/*"
+	],
+	"scripts": {
+		"dev": "rollup -w -c --environment MODE:dev",
+		"build": "rollup -c --environment MODE:prod",
+		"publish": "npm publish --access public"
+	},
+	"keywords": [
+		"canvas",
+		"seal",
+		"公司公章",
+		"个人印章"
+	],
+	"author": "VSirrr <1084037255@qq.com>",
+	"repository": "https://github.com/VSirrr/seal.git",
+	"homepage": "https://github.com/VSirrr/seal",
+	"license": "Apache License",
+	"devDependencies": {
+		"@babel/preset-env": "^7.18.6",
+		"@rollup/plugin-babel": "^5.3.1",
+		"rollup": "^2.75.0",
+		"rollup-plugin-terser": "^7.0.2"
+	}
+}
