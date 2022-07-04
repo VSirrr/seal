@@ -4,17 +4,17 @@ import { terser } from 'rollup-plugin-terser'
 const options = {}
 
 if (process.env.MODE === 'dev') {
-	options.watch = {
-		include: 'src/**',
-	}
+  options.watch = {
+    include: 'src/**'
+  }
 } else {
-	options.plugins = [
-		terser(),
-		babel({
-			babelHelpers: 'bundled',
-			presets: ['@babel/preset-env'],
-		}),
-	]
+  options.plugins = [
+    terser(),
+    babel({
+      babelHelpers: 'bundled',
+      presets: ['@babel/preset-env']
+    })
+  ]
 }
 
 const banner = `
@@ -25,17 +25,17 @@ const banner = `
 `
 
 export default {
-	input: 'src/index.js',
-	output: {
-		file: 'dist/index.js',
-		format: 'umd',
-		name: 'Seal',
-		banner,
-	},
-	onwarn: (msg, warn) => {
-		if (!/Circular/.test(msg)) {
-			warn(msg)
-		}
-	},
-	...options,
+  input: 'src/index.js',
+  output: {
+    file: 'dist/index.js',
+    format: 'umd',
+    name: 'Seal',
+    banner
+  },
+  onwarn: (msg, warn) => {
+    if (!/Circular/.test(msg)) {
+      warn(msg)
+    }
+  },
+  ...options
 }
