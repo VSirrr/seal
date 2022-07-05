@@ -12,6 +12,7 @@
     "postinstall": "husky install",
     "dev": "rollup -w -c --environment MODE:dev",
     "build": "rollup -c --environment MODE:prod",
+    "prepublish": "npm run build",
     "publish": "npm publish --access public"
   },
   "keywords": [
