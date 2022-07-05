@@ -5,7 +5,7 @@ export default class Seal {
   }
 
   // 保存印章（base64）
-  saveSeal() {
-    return this.canvas.toDataURL()
+  saveSeal(...args) {
+    return this.canvas.toDataURL(...args)
   }
 }
