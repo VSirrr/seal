@@ -44,7 +44,8 @@
   },
   "lint-staged": {
     "**/**.{js,json,html,md}": [
-      "prettier --write"
+      "prettier --write",
+      "git add"
     ]
   },
   "commitlint": {
