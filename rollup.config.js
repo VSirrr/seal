@@ -20,7 +20,7 @@ if (process.env.MODE === 'dev') {
 const banner = `
 /*! Copyright Notice
  * @version ${require('./package.json').version}
- * @author VSirrr <1084037255@qq.com>
+ * @author VSirrr
  */
 `
 
