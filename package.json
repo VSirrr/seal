@@ -44,7 +44,7 @@
     "arrowParens": "avoid"
   },
   "lint-staged": {
-    "**/**.{js,json,html,md}": [
+    "!dist/**.{js,json,html,md}": [
       "prettier --write",
       "git add"
     ]
