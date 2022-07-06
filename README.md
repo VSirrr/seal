@@ -1,8 +1,21 @@
 # @vsirrr/seal
 
+## 功能
+
 使用 canvas 绘制公司公章、个人印章
 
+## 使用方式
+
+### 安装
+
+```shell
+npm i @vsirrr/seal
+```
+
+### demo
+
 ```html
+<!-- html -->
 <div>
   <canvas id="company"></canvas>
   <button id="btn1">saveSeal</button>
@@ -38,6 +51,35 @@
   btn2.onclick = function () {
     // saveSeal 调用的是 canvas 实例的 toDataURL() 方法，支持传参
     console.log('saveSeal person:', person.saveSeal())
+  }
+</script>
+
+<!-- vue -->
+<template>
+  <canvas id="canvas"></canvas>
+</template>
+
+<script>
+  import { Official } from '@vsirrr/seal'
+
+  export default {
+    mounted() {
+      new Official('#canvas', options)
+    }
+  }
+</script>
+
+<!-- react -->
+<script>
+  import React, { useEffect } from 'react'
+  import { Personal } from '@vsirrr/seal'
+
+  export default function Seal() {
+    useEffect(() => {
+      new Personal('#canvas', options)
+    })
+
+    return <canvas id="canvas"></canvas>
   }
 </script>
 ```
