@@ -1,6 +1,6 @@
 {
   "name": "@vsirrr/seal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "使用 canvas 绘制公司公章、个人印章",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -10,6 +10,7 @@
     "src/*"
   ],
   "scripts": {
+    "prepare": "husky install",
     "dev": "rollup -w -c --environment MODE:dev",
     "build": "rollup -c --environment MODE:prod",
     "publish": "npm publish --access public"
