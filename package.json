@@ -10,11 +10,9 @@
     "src/*"
   ],
   "scripts": {
-    "prepare": "husky install",
-    "postinstall": "husky install",
     "dev": "rollup -w -c --environment MODE:dev",
     "build": "rollup -c --environment MODE:prod",
-    "publish": "npm run build && npm publish --access public"
+    "publish": "npm publish --access public"
   },
   "keywords": [
     "canvas",
