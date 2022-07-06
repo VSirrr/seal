@@ -1,8 +1,10 @@
 {
-  "name": "@v/seal",
+  "name": "@vsirrr/seal",
   "version": "0.1.0",
   "description": "使用 canvas 绘制公司公章、个人印章",
   "main": "dist/index.js",
+  "module": "dist/index.js",
+  "unpkg": "dist/index.js",
   "files": [
     "dist/*",
     "src/*"
@@ -21,7 +23,10 @@
     "个人印章"
   ],
   "author": "VSirrr",
-  "repository": "https://github.com/VSirrr/seal.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VSirrr/seal.git"
+  },
   "homepage": "https://github.com/VSirrr/seal",
   "license": "Apache License",
   "devDependencies": {
