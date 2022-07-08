@@ -12,7 +12,7 @@
     "prepare": "husky install",
     "dev": "rollup -w -c --environment MODE:dev",
     "build": "rollup -c --environment MODE:prod",
-    "publish": "npm run build && npm publish"
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "canvas",
