@@ -1,4 +1,5 @@
 import Seal from './Seal.js'
+import { normalize } from './_util'
 
 export default class Personal extends Seal {
   static defaultOptions = {
@@ -24,13 +25,28 @@ export default class Personal extends Seal {
       options: { name, border, lineWidth, fontSize }
     } = this
 
+    if ('string' !== typeof name) {
+      throw new TypeError('name 字段必须是字符串类型')
+    }
+
+    const personName = normalize(name)
+
     if (border) {
       const pad = lineWidth * 2
-      canvas.width = name.length * fontSize + pad
+      const dotNum = personName.replace(/[^·]/g, '').length
+
+      if (dotNum) {
+        canvas.width =
+          (personName.length - dotNum) * fontSize +
+          dotNum * (fontSize / 2) +
+          pad
+      } else {
+        canvas.width = personName.length * fontSize + pad
+      }
       canvas.height = fontSize + pad
       this._drawBorder()
     } else {
-      canvas.width = name.length * fontSize
+      canvas.width = personName.length * fontSize
       canvas.height = fontSize
     }
 
@@ -65,7 +81,7 @@ export default class Personal extends Seal {
     ctx.font = `normal normal normal ${fontSize}px ${fontFamily}`
 
     ctx.fillText(
-      name,
+      normalize(name),
       border ? lineWidth : 0,
       fontSize / 2 + (border ? lineWidth : 0)
     )
