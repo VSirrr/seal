@@ -6,14 +6,13 @@
   "module": "dist/index.js",
   "unpkg": "dist/index.js",
   "files": [
-    "dist/*",
-    "src/*"
+    "dist/*"
   ],
   "scripts": {
     "prepare": "husky install",
     "dev": "rollup -w -c --environment MODE:dev",
     "build": "rollup -c --environment MODE:prod",
-    "publish": "npm run build && npm publish --access public"
+    "publish": "npm run build && npm publish"
   },
   "keywords": [
     "canvas",
@@ -57,5 +56,8 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
