@@ -1,4 +1,5 @@
 import Seal from './Seal.js'
+import { normalize } from './_util'
 
 export default class Official extends Seal {
   static defaultOptions = {
@@ -20,6 +21,7 @@ export default class Official extends Seal {
   constructor(id, options) {
     super(id)
     this.options = Object.assign({}, Official.defaultOptions, options || {})
+
     this._init()
   }
 
@@ -29,6 +31,7 @@ export default class Official extends Seal {
       canvas,
       options: { code, type, radius, innerLine }
     } = this
+
     canvas.width = canvas.height = radius * 2
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -110,16 +113,22 @@ export default class Official extends Seal {
       options: { name, color, radius, fontSize, fontFamily }
     } = this
 
+    if ('string' !== typeof name) {
+      throw new TypeError('name 字段必须是字符串类型')
+    }
+
+    const companyName = normalize(name)
+
     ctx.fillStyle = color
     ctx.font = `normal normal normal ${fontSize}px ${fontFamily}`
     ctx.textAlign = 'left'
     ctx.textBaseline = 'middle'
     ctx.translate(radius, radius)
 
-    for (let i = 0, length = name.length; i < length; i++) {
+    for (let i = 0, length = companyName.length; i < length; i++) {
       ctx.save()
       ctx.rotate(-0.17 * (length - 1) + i * 0.34)
-      ctx.fillText(name[i], -fontSize / 2, -radius * 0.73)
+      ctx.fillText(companyName[i], -fontSize / 2, -radius * 0.73)
       ctx.restore()
     }
   }
@@ -130,9 +139,13 @@ export default class Official extends Seal {
       options: { type, radius, typeFontSize, fontFamily }
     } = this
 
+    if ('string' !== typeof type) {
+      throw new TypeError('type 字段必须是字符串类型')
+    }
+
     ctx.font = `normal normal normal ${typeFontSize}px ${fontFamily}`
     ctx.textAlign = 'center'
-    ctx.fillText(type, 0, radius * 0.5)
+    ctx.fillText(normalize(type), 0, radius * 0.5)
     ctx.restore()
   }
 
